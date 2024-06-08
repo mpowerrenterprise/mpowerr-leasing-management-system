@@ -70,7 +70,19 @@
             <td>{{ $Product->p_id }}</td>
             <td>{{ $Product->p_quantity }}</td>
             <td>{{ $Product->p_model }}</td>
-        </tr>
+
+        <td>
+            <form action="{{ route('EditProductViewRoute', ['id' => $Product->id]) }}" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit" class="btn btn-success">Edit</button>
+            </form>
+            <form action="{{ route('DeleteProductRoute', ['id' => $Product->id]) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this Product?');">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </td>
+    </tr>
     @endforeach
 
         <!-- Add more rows with data here -->
