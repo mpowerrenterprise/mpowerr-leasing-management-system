@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('leasing_details', function (Blueprint $table) {
             $table->id();
-            $table->string('khjjh');
-            $table->integer('kjkj'); // Age should be an integer
-            $table->string('ioi'); // Email should be a string
-            $table->string('hhsh'); // Mobile number should be a string
-            $table->string('ssd'); // NIC number should be a string
-            $table->string('sdws'); // Address should be a string
+            $table->string('nic_no');
+            $table->integer('p_id'); // Age should be an integer
+            $table->string('price'); // Email should be a string
+            $table->string('installment'); // Mobile number should be a string
+            $table->string('m_due'); // NIC number should be a string
+            $table->string('date'); // Address should be a string
         });
     }
 
