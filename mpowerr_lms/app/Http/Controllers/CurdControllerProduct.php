@@ -52,14 +52,13 @@ class CurdControllerProduct extends Controller
         // Validate the form data
         $request->validate([
             'id' => 'required|integer', // Validation rule for the Product ID
-            'name' => 'required|string',
-            'age' => 'required|integer',
-            'email' => 'required|string',
-            'gender' => 'required|in:male,female,other',
-            'grade' => 'required|integer',
-            'address' => 'required|string',
-            'mobile_no' => 'required|integer',
-            'nic_no' => 'required|integer',
+            'p_name' => 'required|string',
+            's_rate' => 'required|integer',
+            'b_rate' => 'required|integer',
+            'p_id' => 'required|integer',
+            'p_quantity' => 'required|integer',
+            'p_model' => 'required|string',
+
 
         ]);
 
@@ -67,14 +66,12 @@ class CurdControllerProduct extends Controller
         $affected = DB::table('Product_details')
                         ->where('id', $request->id)
                         ->update([
-                            'name' => $request->input('name'),
-                            'age' => $request->input('age'),
-                            'email' => $request->input('email'),
-                            'gender' => $request->input('gender'),
-                            'grade' => $request->input('grade'),
-                            'address' => $request->input('address'),
-                            'mobile_no' => $request->input('mobile_no'),
-                            'nic_no' => $request->input('nic_no'),
+                            'p_name' => $request->input('p_name'),
+                            's_rate' => $request->input('s_rate'),
+                            'b_rate' => $request->input('b_rate'),
+                            'p_id' => $request->input('p_id'),
+                            'p_quantity' => $request->input('p_quantity'),
+                            'p_model' => $request->input('p_model'),
                         ]);
 
         if ($affected) {

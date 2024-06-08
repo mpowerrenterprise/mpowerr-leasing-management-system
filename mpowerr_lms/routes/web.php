@@ -17,9 +17,9 @@ Route::post('/EditCustomer', [CurdControllerCustomer::class, 'EditCustomerMethod
 
 Route::get('/ProductManagement', [PageController::class, 'ProductManagementPage'])->name("ProductManagementRoute");
 Route::post('/RegisterProduct', [CurdControllerProduct::class, 'RegisterProductMethod'])->name("RegisterProductRoute");
-Route::delete('/DeleteProduct', [CurdControllerCustomer::class, 'DeleteProductMethod'])->name("DeleteProductRoute");
-Route::post('/EditProductView', [CurdControllerCustomer::class, 'EditProductViewMethod'])->name("EditProductViewRoute");
-Route::post('/EditProduct', [CurdControllerCustomer::class, 'EditProductMethod'])->name("EditProductRoute");
+Route::delete('/DeleteProduct', [CurdControllerProduct::class, 'DeleteProductMethod'])->name("DeleteProductRoute");
+Route::post('/EditProductView', [CurdControllerProduct::class, 'EditProductViewMethod'])->name("EditProductViewRoute");
+Route::post('/EditProduct', [CurdControllerProduct::class, 'EditProductMethod'])->name("EditProductRoute");
 
 
 Route::get('/LeasingManagement', [PageController::class, 'LeasingManagementPage'])->name("LeasingManagementRoute");
