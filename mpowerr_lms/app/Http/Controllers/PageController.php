@@ -29,8 +29,10 @@ class PageController extends Controller
     }
 
 
-    function LeasingManagementPage(){
+    function index(){
 
-        return view("LeasingManagement");
+        $Product = DB::table('lease_details')->get();
+        return view("ProductManagement", ['Leases' => $lease]);
+
     }
 }

@@ -42,7 +42,7 @@
 
                         <li><a href="{{route('CustomerManagementRoute')}}"><i class="ti-calendar"></i> Customer Management </a></li>
                         <li><a href="{{route('ProductManagementRoute')}}"><i class="ti-calendar"></i> Product Management</a></li>
-                        <li><a href="{{route('leases.index')}}"><i class="ti-calendar"></i> Leasing Management </a></li>
+                        <li><a href="{{ route('LeasesManagementRoute') }}"><i class="ti-calendar"></i> Leasing Management </a></li>
                         <li><a href=""><i class="ti-calendar"></i> History </a></li>
                         <li><a href=""><i class="ti-calendar"></i> Logout </a></li>
                     </ul>
