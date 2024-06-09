@@ -7,30 +7,30 @@ use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Lease;
 
-class LeaseController extends Controller
+class LeasingController extends Controller
 {
-    public function showForm()
+    public function index()
     {
         $customers = Customer::all();
         $products = Product::all();
         $leases = Lease::all();
 
-        return view('lease_form', compact('customers', 'products', 'leases'));
+        return view('leases.index', compact('customers', 'products', 'leases'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'nic_no' => 'required|string',
-            'p_id' => 'required|integer',
+            'nic_no' => 'required|exists:customers,nic_no',
+            'p_id' => 'required|exists:products,id',
             'price' => 'required|numeric',
-            'installment' => 'required|integer',
+            'installment' => 'required|numeric|min:1',
             'm_due' => 'required|numeric',
             'date' => 'required|date',
         ]);
 
         Lease::create($request->all());
 
-        return redirect()->back()->with('success', 'Lease created successfully!');
+        return redirect()->route('leases.index')->with('success', 'Lease created successfully!');
     }
 }

@@ -5,7 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CurdControllerCustomer;
 use App\Http\Controllers\CurdControllerProduct;
-use App\Http\Controllers\LeaseController;
+use App\Http\Controllers\LeasingController;
 
 Route::get('/', [PageController::class, 'IndexPage'])->name("IndexPageRoute");
 Route::post('/LoginProcess', [AuthenticationController::class, 'LoginProcess'])->name("LoginProcessRoute");
@@ -23,6 +23,5 @@ Route::post('/EditProductView', [CurdControllerProduct::class, 'EditProductViewM
 Route::post('/EditProduct', [CurdControllerProduct::class, 'EditProductMethod'])->name("EditProductRoute");
 
 
-Route::get('/LeasingManagement', [PageController::class, 'LeasingManagementPage'])->name("LeasingManagementRoute");
-Route::get('/lease', [LeaseController::class, 'showForm'])->name('lease.form');
-Route::post('/lease', [LeaseController::class, 'store'])->name('leases.store');
+Route::get('/leases', [LeasingController::class, 'index'])->name('leases.index');
+Route::post('/leases', [LeasingController::class, 'store'])->name('leases.store');

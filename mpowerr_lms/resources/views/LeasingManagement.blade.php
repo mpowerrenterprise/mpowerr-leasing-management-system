@@ -37,7 +37,7 @@
         <select class="form-control" id="p_id" name="p_id" required>
             <option value="">Select Product ID</option>
             @foreach($products as $product)
-                <option value="{{ $product->id }}" data-price="{{ $product->price }}">{{ $product->id }}</option>
+                <option value="{{ $product->id }}" data-price="{{ $product->s_rate }}">{{ $product->id }}</option>
             @endforeach
         </select>
     </div>
