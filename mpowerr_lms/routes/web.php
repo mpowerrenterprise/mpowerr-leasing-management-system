@@ -12,7 +12,7 @@ Route::post('/LoginProcess', [AuthenticationController::class, 'LoginProcess'])-
 Route::get('/LogoutProcess', [AuthenticationController::class, 'LogoutProcess'])->name("LogoutProcessRoute");
 
 
-Route::middleware(['CheckAgeAuth'])->group(function () {
+Route::middleware(['CheckUserAuth'])->group(function () {
 
 Route::get('/CustomerManagement', [PageController::class, 'CustomerManagementPage'])->name("CustomerManagementRoute");
 Route::post('/RegisterCustomer', [CurdControllerCustomer::class, 'RegisterCustomerMethod'])->name("RegisterCustomerRoute");
