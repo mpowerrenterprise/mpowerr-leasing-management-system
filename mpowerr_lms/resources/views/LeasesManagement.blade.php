@@ -21,12 +21,12 @@
     </div>
 @endif
 
-<form action="{{ route('leases.store') }}" method="POST">
+<form action="" method="POST">
     @csrf
     <div class="form-group">
         <label for="nic_no">NIC No</label>
         <select class="form-control" id="nic_no" name="nic_no" required>
-            <option value="">Select NIC No</option>
+            <option selected disabled>Select NIC No</option>
             @foreach($customers as $customer)
                 <option value="{{ $customer->nic_no }}">{{ $customer->nic_no }}</option>
             @endforeach
@@ -35,9 +35,9 @@
     <div class="form-group">
         <label for="p_id">Product ID</label>
         <select class="form-control" id="p_id" name="p_id" required>
-            <option value="">Select Product ID</option>
+            <option selected disabled>Select Product ID</option>
             @foreach($products as $product)
-                <option value="{{ $product->id }}" data-price="{{ $product->price }}">{{ $product->id }}</option>
+                <option value="{{ $product->id }}" data-price="{{ $product->s_rate }}">{{ $product->id }}</option>
             @endforeach
         </select>
     </div>
@@ -71,46 +71,6 @@
             <th>Date</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach($leases as $lease)
-            <tr>
-                <td>{{ $lease->nic_no }}</td>
-                <td>{{ $lease->p_id }}</td>
-                <td>{{ $lease->price }}</td>
-                <td>{{ $lease->installment }}</td>
-                <td>{{ $lease->m_due }}</td>
-                <td>{{ $lease->date }}</td>
-            </tr>
-        @endforeach
-    </tbody>
 </table>
 
-@endsection
-
-@section('scripts')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const productSelect = document.getElementById('p_id');
-    const priceInput = document.getElementById('price');
-    const installmentInput = document.getElementById('installment');
-    const monthlyDueInput = document.getElementById('m_due');
-
-    productSelect.addEventListener('change', function() {
-        const selectedOption = productSelect.options[productSelect.selectedIndex];
-        const price = selectedOption.getAttribute('data-price');
-        priceInput.value = price ? price : '';
-    });
-
-    installmentInput.addEventListener('input', function() {
-        const price = parseFloat(priceInput.value);
-        const installment = parseInt(installmentInput.value);
-        if (!isNaN(price) && !isNaN(installment) && installment > 0) {
-            const monthlyDue = price / installment;
-            monthlyDueInput.value = monthlyDue.toFixed(2);
-        } else {
-            monthlyDueInput.value = '';
-        }
-    });
-});
-</script>
 @endsection

@@ -23,5 +23,5 @@ Route::post('/EditProductView', [CurdControllerProduct::class, 'EditProductViewM
 Route::post('/EditProduct', [CurdControllerProduct::class, 'EditProductMethod'])->name("EditProductRoute");
 
 
-Route::get('/LeasesManagement', [LeasingController::class, 'LeasesManagementPage'])->name('LeasesManagementRoute');
+Route::get('/LeasesManagement', [PageController::class, 'LeasesManagementPage'])->name('LeasesManagementRoute');
 Route::post('/RegisterLeases', [LeasingController::class, 'RegisterLeasesMethod'])->name('RegisterLeasesRoute');

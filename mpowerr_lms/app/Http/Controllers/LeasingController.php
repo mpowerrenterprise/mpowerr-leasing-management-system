@@ -9,13 +9,13 @@ use App\Models\Lease;
 
 class LeasingController extends Controller
 {
-    public function index()
+    public function LeasesManagementPage()
     {
         $customers = Customer::all();
         $products = Product::all();
         $leases = Lease::all();
 
-        return view('leases.index', compact('customers', 'products', 'leases'));
+        return view('LeasesManagementPage', compact('customers', 'products', 'leases'));
     }
 
     public function store(Request $request)
@@ -31,6 +31,6 @@ class LeasingController extends Controller
 
         Lease::create($request->all());
 
-        return redirect()->route('leases.index')->with('success', 'Lease created successfully!');
+        return redirect()->route('LeasesManagementPage')->with('success', 'Lease created successfully!');
     }
 }
