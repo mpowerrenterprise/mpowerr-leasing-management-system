@@ -30,6 +30,6 @@ Route::post('/EditProduct', [CurdControllerProduct::class, 'EditProductMethod'])
 Route::get('/LeasesManagement', [PageController::class, 'LeasesManagementPage'])->name('LeasesManagementRoute');
 Route::post('/RegisterLeases', [LeasingController::class, 'RegisterLeasesMethod'])->name('RegisterLeasesRoute');
 
-Route::post('/PayInstallment', [InstallmentController::class, 'PayInstallment'])->name('PayInstallment');
+Route::post('/PayInstallment', [LeasingController::class, 'PayInstallmentMethod'])->name('PayInstallmentRoute');
 
 });

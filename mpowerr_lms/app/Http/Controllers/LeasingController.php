@@ -64,4 +64,27 @@ class LeasingController extends Controller
             return redirect()->route("LeasesManagementRoute")->with('error', 'Leases not found!');
         }
     }
+
+    function PayInstallmentMethod(Request $request){
+
+        $lease_id = $request->id;
+
+            // Update the installment count in the lease_details table
+        $affected = DB::table('lease_details')
+        ->where('id', $lease_id)
+        ->decrement('installment', 1);
+
+        if ($affected) {
+        // If at least one row was affected, it means the update was successful
+             return redirect()->back()->with('success', 'Installment count reduced successfully.');
+        } else {
+        // If no row was affected, it means the record with the provided ID was not found
+         return redirect()->back()->with('error', 'Lease detail not found.');
+        }
+
+
+
+
+
+    }
 }

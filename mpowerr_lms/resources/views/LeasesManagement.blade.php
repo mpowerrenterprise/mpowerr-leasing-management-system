@@ -82,7 +82,7 @@
             <td>
 
                 <td>
-                    <form action="{{ route('PayInstallment') }}" method="POST" style="display: inline;">
+                    <form action="{{ route('PayInstallmentRoute', ['id' => $lease->id]) }}" method="POST" style="display: inline;">
                         @csrf
                         <button type="submit" class="btn btn-primary">Pay Monthly Due</button>
                     </form>

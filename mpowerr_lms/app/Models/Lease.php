@@ -9,5 +9,5 @@ class Lease extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nic_no', 'p_id', 'price', 'installment', 'm_due', 'date'];
+    protected $fillable = ['id','nic_no', 'p_id', 'price', 'installment', 'm_due', 'date'];
 }
