@@ -78,6 +78,14 @@
             <td>{{ $lease->price }}</td>
             <td>{{ $lease->installment }}</td>
             <td>{{ $lease->m_due }}</td>
+            <td>
+
+            <form action="" method="POST" style="display: inline;">
+                @csrf
+                <button type="submit" class="btn btn-primary">Pay Monthly Due</button>
+            </form>
+            <td>
+
         </tr>
     @endforeach
 </tbody>
