@@ -21,7 +21,7 @@
     </div>
 @endif
 
-<form action="" method="POST">
+<form action="{{ route('RegisterLeasesRoute') }}" method="POST">
     @csrf
     <div class="form-group">
         <label for="nic_no">NIC No</label>
