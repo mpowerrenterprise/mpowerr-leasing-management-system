@@ -28,7 +28,7 @@
         <select class="form-control" id="nic_no" name="nic_no" required>
             <option selected disabled>Select NIC No</option>
             @foreach($customers as $customer)
-                <option value="{{ $customer->nic_no }}">{{ $customer->nic_no }}</option>
+                <option value="{{ $customer->nic_no }}">{{ $customer->nic_no }} - {{ $customer->name }}</option>
             @endforeach
         </select>
     </div>
@@ -37,13 +37,15 @@
         <select class="form-control" id="p_id" name="p_id" required>
             <option selected disabled>Select Product ID</option>
             @foreach($products as $product)
-                <option value="{{ $product->id }}" data-price="{{ $product->s_rate }}">{{ $product->id }}</option>
+                <option value="{{ $product->id }}" data-price="{{ $product->s_rate }}">
+                    {{ $product->id }} - {{ $product->p_name }} - Rs: {{ $product->s_rate }}
+                </option>
             @endforeach
         </select>
     </div>
     <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" class="form-control" id="price" name="price" placeholder="Enter Price" required readonly>
+        <input type="text" class="form-control" id="price" name="price" placeholder="Enter Price" required readonly>
     </div>
     <div class="form-group">
         <label for="installment">Installment</label>
@@ -52,10 +54,6 @@
     <div class="form-group">
         <label for="m_due">Monthly Due</label>
         <input type="number" class="form-control" id="m_due" name="m_due" placeholder="Enter Monthly Due" required readonly>
-    </div>
-    <div class="form-group">
-        <label for="date">Date</label>
-        <input type="date" class="form-control" id="date" name="date" placeholder="Enter Date" required>
     </div>
     <button type="submit" class="btn btn-primary">Lease</button>
 </form>
@@ -73,4 +71,29 @@
     </thead>
 </table>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const productSelect = document.getElementById('p_id');
+        const priceInput = document.getElementById('price');
+        const installmentInput = document.getElementById('installment');
+        const monthlyDueInput = document.getElementById('m_due');
+
+        productSelect.addEventListener('change', function() {
+            const selectedOption = productSelect.options[productSelect.selectedIndex];
+            const price = selectedOption.getAttribute('data-price');
+            priceInput.value = price ? price : '';
+        });
+
+        installmentInput.addEventListener('input', function() {
+            const price = parseFloat(priceInput.value);
+            const installment = parseInt(installmentInput.value);
+            if (!isNaN(price) && !isNaN(installment) && installment > 0) {
+                const monthlyDue = price / installment;
+                monthlyDueInput.value = monthlyDue.toFixed(2);
+            } else {
+                monthlyDueInput.value = '';
+            }
+        });
+    });
+    </script>
 @endsection
