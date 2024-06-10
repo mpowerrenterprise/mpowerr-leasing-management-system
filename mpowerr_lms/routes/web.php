@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CurdControllerCustomer;
 use App\Http\Controllers\CurdControllerProduct;
 use App\Http\Controllers\LeasingController;
+use App\Http\Controllers\InstallmentController;
 
 Route::get('/', [PageController::class, 'IndexPage'])->name("IndexPageRoute");
 Route::post('/LoginProcess', [AuthenticationController::class, 'LoginProcess'])->name("LoginProcessRoute");
@@ -29,5 +30,6 @@ Route::post('/EditProduct', [CurdControllerProduct::class, 'EditProductMethod'])
 Route::get('/LeasesManagement', [PageController::class, 'LeasesManagementPage'])->name('LeasesManagementRoute');
 Route::post('/RegisterLeases', [LeasingController::class, 'RegisterLeasesMethod'])->name('RegisterLeasesRoute');
 
+Route::post('/PayInstallment', [InstallmentController::class, 'PayInstallment'])->name('PayInstallment');
 
 });

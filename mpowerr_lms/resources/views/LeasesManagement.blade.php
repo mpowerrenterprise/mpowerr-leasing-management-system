@@ -66,6 +66,7 @@
             <th>Price</th>
             <th>Installment</th>
             <th>Monthly Due</th>
+            <th>Action</th>
         </tr>
     </thead>
 
@@ -80,10 +81,13 @@
             <td>{{ $lease->m_due }}</td>
             <td>
 
-            <form action="" method="POST" style="display: inline;">
-                @csrf
-                <button type="submit" class="btn btn-primary">Pay Monthly Due</button>
-            </form>
+                <td>
+                    <form action="{{ route('PayInstallment') }}" method="POST" style="display: inline;">
+                        @csrf
+                        <button type="submit" class="btn btn-primary">Pay Monthly Due</button>
+                    </form>
+                </td>
+
             <td>
 
         </tr>
