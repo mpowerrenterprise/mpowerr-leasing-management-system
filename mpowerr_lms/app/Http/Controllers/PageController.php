@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Lease;
+
 
 
 class PageController extends Controller
@@ -33,7 +35,8 @@ class PageController extends Controller
 
         $customers = DB::table('customer_details')->select('nic_no', 'name')->get();
         $products = DB::table('product_details')->select('id', 'p_name', 's_rate')->get();
-        return view("LeasesManagement", ['customers'  =>  $customers, 'products' => $products]);
+        $leases = DB::table('lease_details')->select('nic_no', 'p_id', 'price', 'installment', 'm_due')->get();
+        return view("LeasesManagement", ['customers' => $customers, 'products' => $products, 'leases' => $leases]);
 
     }
 }

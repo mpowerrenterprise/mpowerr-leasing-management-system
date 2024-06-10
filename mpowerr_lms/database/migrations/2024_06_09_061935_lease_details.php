@@ -18,7 +18,6 @@ return new class extends Migration
                 $table->integer('price');
                 $table->integer('installment');
                 $table->integer('m_due');
-                $table->string('date');
             });
     }
 

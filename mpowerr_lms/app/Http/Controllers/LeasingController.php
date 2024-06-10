@@ -27,7 +27,6 @@ class LeasingController extends Controller
             'price' => 'required|numeric',
             'installment' => 'required|numeric|min:1',
             'm_due' => 'required|numeric',
-            'date' => 'required|date',
         ]);
 
         Lease::create($request->all());

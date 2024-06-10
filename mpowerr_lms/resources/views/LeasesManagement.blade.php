@@ -66,10 +66,21 @@
             <th>Price</th>
             <th>Installment</th>
             <th>Monthly Due</th>
-            <th>Date</th>
         </tr>
     </thead>
 </table>
+
+<tbody>
+    @foreach($leases as $lease)
+        <tr>
+            <td>{{ $lease->nic_no }}</td>
+            <td>{{ $lease->p_id }}</td>
+            <td>{{ $lease->price }}</td>
+            <td>{{ $lease->installment }}</td>
+            <td>{{ $lease->m_due }}</td>
+        </tr>
+    @endforeach
+</tbody>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
