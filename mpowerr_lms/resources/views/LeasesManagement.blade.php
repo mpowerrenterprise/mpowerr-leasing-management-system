@@ -68,7 +68,7 @@
             <th>Monthly Due</th>
         </tr>
     </thead>
-</table>
+
 
 <tbody>
     @foreach($leases as $lease)
@@ -81,7 +81,7 @@
         </tr>
     @endforeach
 </tbody>
-
+</table>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const productSelect = document.getElementById('p_id');
