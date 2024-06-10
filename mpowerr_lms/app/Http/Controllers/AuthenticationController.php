@@ -27,4 +27,14 @@ class AuthenticationController extends Controller
         ]);
 
     }
+
+    function LogoutProcess(Request $request){
+
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route("IndexPageRoute");
+
+    }
 }

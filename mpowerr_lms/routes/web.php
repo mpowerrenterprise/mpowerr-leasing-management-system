@@ -9,6 +9,10 @@ use App\Http\Controllers\LeasingController;
 
 Route::get('/', [PageController::class, 'IndexPage'])->name("IndexPageRoute");
 Route::post('/LoginProcess', [AuthenticationController::class, 'LoginProcess'])->name("LoginProcessRoute");
+Route::get('/LogoutProcess', [AuthenticationController::class, 'LogoutProcess'])->name("LogoutProcessRoute");
+
+
+Route::middleware(['CheckAgeAuth'])->group(function () {
 
 Route::get('/CustomerManagement', [PageController::class, 'CustomerManagementPage'])->name("CustomerManagementRoute");
 Route::post('/RegisterCustomer', [CurdControllerCustomer::class, 'RegisterCustomerMethod'])->name("RegisterCustomerRoute");
@@ -22,6 +26,8 @@ Route::delete('/DeleteProduct', [CurdControllerProduct::class, 'DeleteProductMet
 Route::post('/EditProductView', [CurdControllerProduct::class, 'EditProductViewMethod'])->name("EditProductViewRoute");
 Route::post('/EditProduct', [CurdControllerProduct::class, 'EditProductMethod'])->name("EditProductRoute");
 
-
 Route::get('/LeasesManagement', [PageController::class, 'LeasesManagementPage'])->name('LeasesManagementRoute');
 Route::post('/RegisterLeases', [LeasingController::class, 'RegisterLeasesMethod'])->name('RegisterLeasesRoute');
+
+
+});
