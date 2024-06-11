@@ -89,7 +89,6 @@
             <td>
         </tr>
     @endforeach
-        <a href="{{ route('ShowHistory') }}">View History</a>
 </tbody>
 </table>
 <script>

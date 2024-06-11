@@ -65,49 +65,42 @@ class LeasingController extends Controller
         }
     }
 
-    function PayInstallmentMethod(Request $request){
-
+    public function PayInstallmentMethod(Request $request)
+    {
         $lease_id = $request->id;
 
-            // Update the installment count in the lease_details table
+        // Update the installment count in the lease_details table
         $affected = DB::table('lease_details')
-        ->where('id', $lease_id)
-        ->decrement('installment', 1);
+            ->where('id', $lease_id)
+            ->decrement('installment', 1);
 
-        if ($affected) {
-            // Check if the installment count has reached zero
-            $leaseDetail = DB::table('lease_details')->where('id', $lease_id)->first();
+            if ($affected) {
+                // Check if installment became zero
+                $updatedInstallment = DB::table('lease_details')
+                    ->where('id', $lease_id)
+                    ->value('installment');
 
-            if ($leaseDetail->installments == 0) {
-                // Move the record to the history table
-                DB::table('lease_details_history')->insert([
-                    'original_id' => $leaseDetail->id,
-                    'installments' => $leaseDetail->installments,
-                    // Add other columns as needed
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ]);
+                if ($updatedInstallment == 0) {
+                    // If installment became zero, fetch lease details and add them to history table
+                    $lease = DB::table('lease_details')
+                        ->select('nic_no', 'p_id', 'price')
+                        ->where('id', $lease_id)
+                        ->first();
 
-                // Delete the record from the original table
-                DB::table('lease_details')->where('id', $lease_id)->delete();
+                    DB::table('history')->insert([
+                        'nic_no' => $lease->nic_no,
+                        'p_id' => $lease->p_id,
+                        'price' => $lease->price,
+                        // You can add more fields here if needed
+                    ]);
+                }
 
-                return redirect()->back()->with('success', 'Installment count reduced to zero and moved to history successfully.');
+                // If at least one row was affected, it means the update was successful
+                return redirect()->back()->with('success', 'Installment count reduced successfully.');
+            } else {
+                // If no row was affected, it means the record with the provided ID was not found
+                return redirect()->back()->with('error', 'Lease detail not found.');
             }
 
-        if ($affected) {
-        // If at least one row was affected, it means the update was successful
-             return redirect()->back()->with('success', 'Installment count reduced successfully.');
-        } else {
-        // If no row was affected, it means the record with the provided ID was not found
-         return redirect()->back()->with('error', 'Lease detail not found.');
-        }
     }
-}
-
-public function ShowLeaseDetails()
-{
-    $leaseDetails = DB::table('lease_details')->get();
-    return view('lease_details', ['leaseDetails' => $leaseDetails]);
-}
-
 }

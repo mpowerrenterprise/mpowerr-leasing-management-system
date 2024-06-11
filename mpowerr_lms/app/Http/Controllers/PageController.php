@@ -39,4 +39,11 @@ class PageController extends Controller
         return view("LeasesManagement", ['customers' => $customers, 'products' => $products, 'leases' => $leases]);
 
     }
+
+    function HistoryManagementPage(){
+        $leases = DB::table('lease_details')->select('nic_no', 'p_id', 'price')->get();
+        return view("History", ['leases' => $leases]);
+
+    }
+
 }
