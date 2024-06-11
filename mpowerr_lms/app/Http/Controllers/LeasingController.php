@@ -101,8 +101,13 @@ class LeasingController extends Controller
         // If no row was affected, it means the record with the provided ID was not found
          return redirect()->back()->with('error', 'Lease detail not found.');
         }
-
-
     }
 }
+
+public function ShowLeaseDetails()
+{
+    $leaseDetails = DB::table('lease_details')->get();
+    return view('lease_details', ['leaseDetails' => $leaseDetails]);
+}
+
 }
