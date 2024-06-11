@@ -75,6 +75,26 @@ class LeasingController extends Controller
         ->decrement('installment', 1);
 
         if ($affected) {
+            // Check if the installment count has reached zero
+            $leaseDetail = DB::table('lease_details')->where('id', $lease_id)->first();
+
+            if ($leaseDetail->installments == 0) {
+                // Move the record to the history table
+                DB::table('lease_details_history')->insert([
+                    'original_id' => $leaseDetail->id,
+                    'installments' => $leaseDetail->installments,
+                    // Add other columns as needed
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+
+                // Delete the record from the original table
+                DB::table('lease_details')->where('id', $lease_id)->delete();
+
+                return redirect()->back()->with('success', 'Installment count reduced to zero and moved to history successfully.');
+            }
+
+        if ($affected) {
         // If at least one row was affected, it means the update was successful
              return redirect()->back()->with('success', 'Installment count reduced successfully.');
         } else {
@@ -84,4 +104,5 @@ class LeasingController extends Controller
 
 
     }
+}
 }

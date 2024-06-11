@@ -32,4 +32,6 @@ Route::post('/RegisterLeases', [LeasingController::class, 'RegisterLeasesMethod'
 
 Route::post('/PayInstallment', [LeasingController::class, 'PayInstallmentMethod'])->name('PayInstallmentRoute');
 
+Route::get('/History', [LeasingController::class, 'ShowHistory'])->name('ShowHistory');
+
 });

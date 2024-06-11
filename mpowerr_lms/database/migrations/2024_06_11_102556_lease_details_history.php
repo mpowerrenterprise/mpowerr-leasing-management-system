@@ -6,19 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        //
+        Schema::create('lease_details_history', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('original_id');
+            $table->integer('installments');
+            $table->timestamps();
+            // Add other columns as needed, e.g., 'lease_id', 'amount', etc.
+        });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        //
+        Schema::dropIfExists('lease_details_history');
     }
 };

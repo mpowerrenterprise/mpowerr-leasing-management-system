@@ -80,18 +80,16 @@
             <td>{{ $lease->installment }}</td>
             <td>{{ $lease->m_due }}</td>
             <td>
-
                 <td>
                     <form action="{{ route('PayInstallmentRoute', ['id' => $lease->id]) }}" method="POST" style="display: inline;">
                         @csrf
                         <button type="submit" class="btn btn-primary">Pay Monthly Due</button>
                     </form>
                 </td>
-
             <td>
-
         </tr>
     @endforeach
+        <a href="{{ route('ShowHistory') }}">View History</a>
 </tbody>
 </table>
 <script>
