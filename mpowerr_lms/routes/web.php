@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\CurdControllerCustomer;
 use App\Http\Controllers\CurdControllerProduct;
 use App\Http\Controllers\LeasingController;
+use App\Http\Controllers\CrudControllerHistory;
 
 Route::get('/', [PageController::class, 'IndexPage'])->name("IndexPageRoute");
 Route::post('/LoginProcess', [AuthenticationController::class, 'LoginProcess'])->name("LoginProcessRoute");
@@ -28,11 +29,13 @@ Route::post('/EditProduct', [CurdControllerProduct::class, 'EditProductMethod'])
 
 Route::get('/LeasesManagement', [PageController::class, 'LeasesManagementPage'])->name('LeasesManagementRoute');
 Route::post('/RegisterLeases', [LeasingController::class, 'RegisterLeasesMethod'])->name('RegisterLeasesRoute');
+Route::delete('/DeleteLeases', [CrudControllerHistory::class, 'DeleteLeasesMethod'])->name("DeleteLeasesRoute");
 
 Route::post('/PayInstallment', [LeasingController::class, 'PayInstallmentMethod'])->name('PayInstallmentRoute');
 Route::delete('/DeleteInstallment', [CurdControllerProduct::class, 'DeleteInstallmentMethod'])->name("DeleteInstallmentRoute");
 
 Route::get('/HistoryManagement', [PageController::class, 'HistoryManagementPage'])->name("HistoryManagementRoute");
-Route::delete('/DeleteHistory', [LeasingController::class, 'DeleteHistoryMethod'])->name("DeleteHistoryRoute");
+
+Route::get('/SettingManagement', [PageController::class, 'SettingManagementPage'])->name("SettingManagementRoute");
 
 });

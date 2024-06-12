@@ -34,6 +34,11 @@
                 <td>{{ $lease->p_id }}</td>
                 <td>{{ $lease->price }}</td>
                 <td>
+                <form action="{{ route('DeleteLeasesRoute', ['id' => $lease->id]) }}" method="POST" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this History?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
             </form>
                 </td>
             </tr>

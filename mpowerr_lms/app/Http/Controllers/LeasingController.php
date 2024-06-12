@@ -75,33 +75,11 @@ class LeasingController extends Controller
             ->decrement('installment', 1);
 
             if ($affected) {
-                // Check if installment became zero
-                $updatedInstallment = DB::table('lease_details')
-                    ->where('id', $lease_id)
-                    ->value('installment');
-
-                if ($updatedInstallment == 0) {
-                    // If installment became zero, fetch lease details and add them to history table
-                    $lease = DB::table('lease_details')
-                        ->select('nic_no', 'p_id', 'price')
-                        ->where('id', $lease_id)
-                        ->first();
-
-                    DB::table('history')->insert([
-                        'nic_no' => $lease->nic_no,
-                        'p_id' => $lease->p_id,
-                        'price' => $lease->price,
-                        // You can add more fields here if needed
-                    ]);
-                }
-
                 // If at least one row was affected, it means the update was successful
                 return redirect()->back()->with('success', 'Installment count reduced successfully.');
             } else {
                 // If no row was affected, it means the record with the provided ID was not found
                 return redirect()->back()->with('error', 'Lease detail not found.');
             }
-
     }
-
 }
