@@ -50,10 +50,6 @@
         <input type="text" class="form-control" id="email" name="email" placeholder="Enter E-mail" required>
     </div>
     <div class="form-group">
-        <label for="grade">Grade</label>
-        <input type="text" class="form-control" id="grade" name="grade" placeholder="Enter Grade" required>
-    </div>
-    <div class="form-group">
         <label for="nic_no">Nic No</label>
         <input type="text" class="form-control" id="nic_no" name="nic_no" placeholder="Enter Nic No" required>
     </div>
@@ -71,7 +67,6 @@
             <th>Age</th>
             <th>Email</th>
             <th>Gender</th>
-            <th>Grade</th>
             <th>Address</th>
             <th>Nic No</th>
             <th>Address</th>
@@ -86,7 +81,6 @@
             <td>{{ $Customer->age }}</td>
             <td>{{ $Customer->email }}</td>
             <td>{{ $Customer->gender }}</td>
-            <td>{{ $Customer->grade }}</td>
             <td>{{ $Customer->address }}</td>
             <td>{{ $Customer->mobile_no }}</td>
             <td>{{ $Customer->nic_no }}</td>

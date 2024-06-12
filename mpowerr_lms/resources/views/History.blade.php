@@ -28,17 +28,16 @@
     </thead>
     <tbody>
         <!-- Loop through your data to populate the table rows -->
-        @foreach($leases as $leases)
+        @foreach($leases as $lease)
             <tr>
-                <td>{{ $leases->nic_no }}</td>
-                <td>{{ $leases->p_id }}</td>
-                <td>{{ $leases->price }}</td>
+                <td>{{ $lease->nic_no }}</td>
+                <td>{{ $lease->p_id }}</td>
+                <td>{{ $lease->price }}</td>
                 <td>
-                    <!-- You can add action buttons or links here -->
+            </form>
                 </td>
             </tr>
         @endforeach
-
     </tbody>
 </table>
 @endsection

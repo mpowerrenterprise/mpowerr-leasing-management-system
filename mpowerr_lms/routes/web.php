@@ -30,9 +30,9 @@ Route::get('/LeasesManagement', [PageController::class, 'LeasesManagementPage'])
 Route::post('/RegisterLeases', [LeasingController::class, 'RegisterLeasesMethod'])->name('RegisterLeasesRoute');
 
 Route::post('/PayInstallment', [LeasingController::class, 'PayInstallmentMethod'])->name('PayInstallmentRoute');
-Route::post('/pay-installment', [LeasingController::class, 'PayInstallmentMethod'])->name("payInstallment");
-
+Route::delete('/DeleteInstallment', [CurdControllerProduct::class, 'DeleteInstallmentMethod'])->name("DeleteInstallmentRoute");
 
 Route::get('/HistoryManagement', [PageController::class, 'HistoryManagementPage'])->name("HistoryManagementRoute");
+Route::delete('/DeleteHistory', [LeasingController::class, 'DeleteHistoryMethod'])->name("DeleteHistoryRoute");
 
 });
