@@ -63,3 +63,10 @@
    
  - Logout: Securely end session.
 
+
+## Acknowledgments
+
+ - Built with Laravel framework, HTML, CSS, Bootstrap, JavaScript.
+   
+ - Designed for leasing companies to manage customers, products, and user settings.
+
