@@ -2,7 +2,7 @@
 
 ## Introduction
 
-#### This project is a comprehensive leasing management system developed using Laravel, integrating HTML, CSS, Bootstrap, JavaScript, and PHP. It includes modules for customer management, product management, history tracking, user settings, and password management, designed specifically for leasing companies.
+This project is a prototype for leasing management system developed using Laravel, integrating HTML, CSS, Bootstrap, JavaScript, and PHP. It includes modules for customer management, product management, history tracking, user settings, and password management, designed specifically for leasing companies.
 
 ## Features
 
@@ -21,6 +21,9 @@
   ### 1. Login
 
 ![lo](https://github.com/mpowerrenterprise/mpowerr-leasing-management-system/assets/106969157/9f729b97-361a-4b24-abe0-f48cf6ec7ca3)
+
+- **Username: admin**
+- **Password: nithu**
 
 ### 2. Customer Management
 
